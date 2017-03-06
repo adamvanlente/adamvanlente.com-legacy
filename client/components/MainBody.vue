@@ -1,8 +1,9 @@
 <template>
   <div>
-    <p>I'm Adam, a software engineer and entrepreneur. I am currently at <a href="http://www.yieldmo.com/" target="new">Yieldmo</a> - a <a href="http://www.gv.com/" target="new">GV</a> and <a href="https://www.usv.com/" target="new">USV</a> backed startup - where I'm helping build some world-class applications.</p>
-    <p>Previously I spent a few years working in geospatial software, mostly at Google on a <a href="https://www.google.com/work/mapsearth/" target="new">Maps for Business</a> product, and also at <a href="https://www.crunchbase.com/organization/urbanmapping" target="new">Urban Mapping</a>, where I spruced up some applications before they were acquired by <a href="http://www.maponics.com/" target="new">Maponics</a>.</p>
-    <p>I also co-own a 14 year old t-shirt company called <a href="http://www.retroduck.com/" target="new">RetroDuck</a>, which I ran for a little over 6 years while honing my craft as a software engineer.</p>
+    <p><span class="currently">Currently</span>VP of Engineering at <a href="http://www.mikmak.tv/" target="new">MikMak</a>, building the future of shoppable video in Brooklyn.</p>
+    <p><span class="previously">Previously</span>Lead Product Engineer &amp; Product Owner <a href="http://www.yieldmo.com/" target="new">Yieldmo</a>, where we built some great Applications, grew a ton, and did excellent things for mobile advertising.</p>
+    <p><span class="before">Before</span>Several years working in geospatial software, mostly at Google on a <a href="https://www.google.com/work/mapsearth/" target="new">Maps for Business</a> product, and also at <a href="https://www.crunchbase.com/organization/urbanmapping" target="new">Urban Mapping</a>, where I spruced up some applications before they were acquired by <a href="http://www.maponics.com/" target="new">Maponics</a>.</p>
+    <p><span class="earlier">Earlier</span>Ran a small t-shirt company called <a href="http://www.retroduck.com/" target="new">RetroDuck</a> for about 7 years. I honed my product &amp; software skills here, and still co-own the company with some friends.</p>
   </div>
 </template>
 
@@ -27,6 +28,30 @@ export default {
   p a:hover {
     color: #5d5959;
   }
+
+  .previously,
+  .currently,
+  .earlier,
+  .before {
+    display: block;
+  }
+
+  .currently {
+    color: rgb(226, 224, 224);
+  }
+
+  .previously {
+    color: rgb(226, 224, 224);
+  }
+
+  .earlier {
+    color: rgb(226, 224, 224);
+  }
+
+  .before {
+    color: rgb(226, 224, 224);
+  }
+
   @media only screen and (max-width: 500px) {
     p {
       font-size: 18px;
