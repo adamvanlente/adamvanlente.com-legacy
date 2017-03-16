@@ -54,7 +54,7 @@ const state = {
       textBlocks: [
         'In 2015 I moved from San Francisco to New York and joined Yieldmo, a GV & USV backed startup in the AdTech space.',
         'The primary product of Yieldmo is ad formats, which reach 2 out of every 3 mobile device users in the US (stat is from late 2015). I joined the team as an Engineering Lead on a project called "Ad Builder". The idea of this tool was to allow users to build their custom versions of our Ad Formats.',
-        'I worked with a great team of designers and engineers to coordinate the build and launch of this tool. After launch (15 August 2015) it became the primary tool used internally and externally for building a trafficking creatives within the Yieldmo platform.'
+        'I worked with a great team of designers and engineers to coordinate the build and launch of this tool. After launch (15 August 2015) it became the primary tool used internally and externally for building and trafficking creatives within the Yieldmo platform.'
       ],
       images: [
         '/images/yieldmo-ad-builder-01.gif',
