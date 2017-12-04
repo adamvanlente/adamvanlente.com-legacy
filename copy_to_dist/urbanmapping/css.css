@@ -1,0 +1,156 @@
+body {
+ font-family: "Roboto Slab", serif;
+ font-weight: 300;
+ background-color: #FCFCFC;
+ color: #666;
+}
+
+p,
+pre,
+h2 {
+   display: block;
+   margin: 0 auto;
+   margin-top: 4px;
+   padding: 8px;
+   text-align: justify;
+}
+
+h2 {
+   margin-top: 32px;
+}
+
+h2 span {
+   display: inline-block;
+   background-color: #94BF91;
+   padding: 2px 4px;
+   border-radius: 2px;
+   cursor: pointer;
+   color: #fff;
+   font-weight: normal;
+}
+
+#google_map { 
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+pre {
+   background-color: #F1F1F1;
+   border: 1px solid #DCDCDC;
+   color: #333;
+   overflow: hidden;
+   white-space: pre-wrap;
+   box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+pre span {
+   color: rgba(0,0,0,0.3);
+}
+
+#population_bar_chart {
+   margin-top: 0;
+}
+
+#population_bar_chart span {
+   width: 90%;
+   display: block;
+   color: #333;
+   margin-top: 2px;
+   background-color: #F1F1F1;
+}
+
+#population_bar_chart label {
+   padding: 4px;
+   display: inline-block;
+   white-space: nowrap;
+   letter-spacing: 1px;
+}
+
+.evenBar {
+   background-color: rgba(148, 191, 145, 1);
+}
+
+.oddBar {
+   background-color: rgba(148, 191, 145, .7);
+}
+
+.pie_chart {
+  width: 500px;
+  border: 2px;
+  display: block;
+  margin: 0 auto;
+}
+
+#pie_chart_holder {
+   border: 1px solid #DCDCDC;
+   padding: 4px;
+   box-shadow: 0 0 3px rgba(0,0,0,0.1);
+   max-height: 525px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   p,
+   pre,
+   h2 {
+      width: 90%;
+      font-size: 30px;
+   }
+   #google_map { 
+      width: 90%;
+      height: 300px;
+   }
+   pre {
+      font-size: 10px;
+   }
+}
+
+/* Tablets (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 480px) and (max-device-width : 800px) {
+   p,
+   pre,
+   h2 {
+      width: 90%;
+      font-size: 30px;
+   }
+   #google_map { 
+      width: 90%;
+      height: 300px;
+   }
+   pre {
+      font-size: 13px;
+   }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-device-width : 800px) and (max-device-width : 1824px) {
+   p,
+   pre,
+   h2 {
+      width: 60%;
+      font-size: 12px;
+   }
+   h2 {
+      font-size: 16px;
+   }
+   #google_map { 
+      width: 60%;
+      height: 300px;
+   }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+   p,
+   pre,
+   h2 {
+      width: 60%;
+      font-size: 12px;
+   }
+   #google_map { 
+      width: 60%;
+      height: 300px;
+   }
+}
+

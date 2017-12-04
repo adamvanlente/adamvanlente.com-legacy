@@ -1,0 +1,71 @@
+<html>
+<head>
+<title></title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="js/colorfade.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+
+</head>
+ <body onload="phaseColor()">
+
+<p class="home">
+ <a href="/">home</a>
+</p>
+
+<p>
+  In a moment of boredom I thought it would be fun to use a javascript timer to dynamically change the color of a page element.  Using CSS transitions, the switch between colors becomes gradual.  
+</p>
+
+<p>
+
+ <div id="AVL"></div>
+
+</p>
+
+<p>
+ My actual implementation was a little hasty, so it could be simpler.  I created five CSS classes, but if you wanted many more, it may be simpler to hold your color options in a javascript object/array, and pass through them there.  Here is what I did:
+</p>
+
+<pre>
+
+// CSS - I created five different color classes in css.  We will run through these in the javascript.  
+
+  .color_one {
+   background-color: #f76859;
+   transition: ease-in-out 2s;
+   -webkit-transition: ease-in-out 2s; 
+   /* Webkit vendor code neccesary */
+  }
+
+
+// Javascript - This lies within my init() function
+
+element.className = 'class_one';
+
+setInterval(function(){
+   ...
+
+   } else if (element.className == 'class_four') {
+     element.className = 'class_five';
+   } else if (element.className == 'class_five') {
+     element.className = 'class_one';
+   }
+
+}, 2000); 
+
+ </pre>
+
+ <p>
+ Using Javascript's timers to update your CSS classes is dead simple.  This effect can be very subtle if used in a small element with a large time interval, or attention grabbing if used in a large element with a tiny interval.
+</p>
+
+<p class="bottom">&copy; 2014 adam van lente</p>
+
+ </body>  
+ </html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link rel="apple-touch-icon-precomposed" href="nashville_icon.png"/>
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgFGCvAcoT-MkMo7X94vAnP3vhbt8J2Mg&amp;sensor=true"></script>
+<script type="text/javascript" src="js/richmarkers.js"></script>
+<script type="text/javascript" src="http://www.popfacts.net/spotfacts/js/jquery.js"></script>
+<script type="text/javascript" src="http://popfacts.net/api/v1/make.py?cmd=showbar"></script>
+
+
+    <style type="text/css">
+      
+      html { height: 100% }
+      
+      body { height: 100%; margin: 0; padding: 0 }
+      
+      #map-canvas { 
+        position: absolute;
+        display: block;
+        left: 0%;
+        top: 0%;
+        right: 0%;
+        bottom: 0%;
+        box-shadow: 0 0 8px rgba(0,0,0,0.4);
+        z-index: 0;
+      }
+
+      .currentbar {
+        display: block;
+position: fixed;
+background-color: #000;
+z-index: 20;
+right: 10px;
+top: 40px;
+color: #fff;
+padding: 8px 16px;
+border-radius: 2px;
+font-family: Arial,sans-serif;
+
+
+      }
+
+      #header {
+       display: block;
+       width: 100%;
+       text-align: center;
+       z-index: 2;
+       position: fixed;
+       top: 0;
+       background-color: rgba(255,255,255,0.5);
+       margin: 0;
+       padding: 8px;
+       vertical-align: baseline;
+       color: #000;
+      }
+
+      .message {
+        display: block;
+        position: absolute;
+        background-color: #CA5555;
+        z-index: 3;
+        font-family: "Bitter", sans-serif;
+        min-height: 10px;
+        max-width: 300px;
+        line-height: 30px;
+        padding: 16px;
+        font-size: 13px;
+        right: 10px;
+        bottom: 35px;
+        color: #fff;
+        box-shadow: 0 0 9px rgba(0,0,0,0.3);
+        text-align: right;
+      }
+
+      .message a,
+      .message a:hover,
+      .message a:active,
+      .message a:visited {
+       color: #fff;
+      }
+
+      h1,
+      h2 {
+        color: #333;
+        font-size: 13px;
+        text-shadow: 1px 1px 12px rgba(0,0,0,0.2);
+      }
+
+
+      h1 {
+        font-size: 15px;
+        letter-spacing: .3em;
+        font-family: "Bitter", serif;
+        margin-bottom: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        margin-top: 0;
+        font-family: "Bitter", serif;
+        font-size: .7em;
+        font-weight: normal;
+        margin-left: -4px;
+      }
+
+    </style>
+    </script>
+    <script type="text/javascript">
+
+      var boundsObj;
+      var googleQueryBase = 'http://maps.google.com/?q=';
+      var bars = [
+        {
+         "name": "Stop 1: Dirty Nelly's",
+         "address": "2328 Irving St, San Francisco, CA 94122",
+         "coords": [37.763492,-122.482971]
+        },
+        {
+         "name": "Stop 2: Silver Spur",
+         "address": "1914 Irving St, San Francisco, CA 94122",
+         "coords": [37.763713,-122.478596]
+        },{
+         "name": "Stop 3: Chug Pub",
+         "address": "1849 Lincoln Way, San Francisco, CA 94122",
+         "coords": [37.765238,-122.478178]
+        },{
+         "name": "Stop 4: The Corner Spot",
+         "address": "1368 Irving St, San Francisco, California 94122",
+         "coords": [37.763782,-122.472665]
+        },
+        {
+         "name": "Stop 5: Mucky Duck",
+         "address": "1315 9th Ave, San Francisco, CA 94122",
+         "coords": [37.763694,-122.466432]
+        },
+        {
+         "name": "Stop 6: Yancy's Tavern",
+         "address": "734 Irving St, San Francisco, CA 94122",
+         "coords": [37.764086,-122.465874]
+        },
+        {
+         "name": "Possible Stop 7: Happy Lounge",
+         "address": "3745 Geary Blvd, San Francisco, CA 94118",
+         "coords": [37.781008,-122.459708]
+        }
+      ];
+
+      function initialize() {
+        var myStyles = [
+          {
+              featureType: "poi",
+              elementType: "labels",
+              stylers: [
+                    { visibility: "off" }
+              ]
+          },
+          {
+              "featureType": "landscape",
+              "stylers": [
+                  {
+                      "saturation": -100
+                  },
+                  {
+                      "lightness": 65
+                  },
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi",
+              "stylers": [
+                  {
+                      "saturation": -100
+                  },
+                  {
+                      "lightness": 51
+                  },
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.highway",
+              "stylers": [
+                  {
+                      "saturation": -100
+                  },
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.arterial",
+              "stylers": [
+                  {
+                      "saturation": -100
+                  },
+                  {
+                      "lightness": 30
+                  },
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.local",
+              "stylers": [
+                  {
+                      "saturation": -100
+                  },
+                  {
+                      "lightness": 40
+                  },
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "transit",
+              "stylers": [
+                  {
+                      "saturation": -100
+                  },
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "administrative.province",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "water",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  },
+                  {
+                      "lightness": -25
+                  },
+                  {
+                      "saturation": -100
+                  }
+              ]
+          },
+          {
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "hue": "#ffff00"
+                  },
+                  {
+                      "lightness": -25
+                  },
+                  {
+                      "saturation": -97
+                  }
+              ]
+          }
+      ]
+
+        var mapOptions = {
+          center: new google.maps.LatLng(37.771968,-122.457304),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          zoomControl: true,
+          styles: myStyles
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        boundsObj = new google.maps.LatLngBounds();
+        addMarkers(map);
+      }
+
+      function addMarkers(map) {
+        for (var i = 0; i < bars.length - 1; i++) {
+         var abar = bars[i];
+         var name = abar.name;
+         var address = abar.address;
+         var lat = abar.coords[0];
+         var lon = abar.coords[1];
+         var coords = new google.maps.LatLng(lat, lon);
+         console.log(name, address, lat, lon)
+         
+         boundsObj.extend(coords);
+
+         var marker = new RichMarker({
+             position: coords,
+             map: map,
+             flat: true,
+             content: '<img src="images/chris.png"/ height="70px" width="55px">'
+           });
+         
+        var infowin = new google.maps.InfoWindow({
+            content: 'Legend\'s Corner. Records all over the wall.  Sometimes just regular rock & roll in here.'
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker,i){
+            return function(){
+                var info =
+                  bars[i].name + '<br><a href="' + googleQueryBase + bars[i].address + '">' + bars[i].address.split(',')[0] + '</a>';
+                // infowin.setContent(info);
+                // infowin.open(map, marker);
+                showAddress(info);
+                map.setCenter(marker.getPosition());
+            }
+        })(marker,i));
+
+         google.maps.event.addListener(marker, 'click', function() {
+           
+           console.log(info);
+         });
+
+        }
+        map.fitBounds(boundsObj);
+      }
+
+      function showAddress(name) {
+       var div = document.getElementById('message');
+       message.innerHTML = name;
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
+      
+
+
+    </script>
+  </head>
+  <body>
+    <div id="currentbar" class="currentbar"></div>
+    <div id="header">
+      <h1>CHRIS' BDAY BAR CRAWL</h1>
+    </div>
+    <div id="message" class="message"/>Click Chris' face for an address!</div>
+    <div id="map-canvas"/></div>
+    
+    <script type="text/javascript">
+      var currentbar = document.getElementById('currentbar');
+      currentbar.innerHTML = '[Status] We are ' + bar;
+    </script>
+
+  </body>
+</html>

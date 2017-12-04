@@ -1,0 +1,319 @@
+body {
+ font-family: "Roboto Slab", serif;
+ font-weight: 300;
+ background-color: #FCFCFC;
+}
+
+.social-icons img {
+  padding: 12px;
+  height: 30px;
+  width: 30px;
+}
+
+
+#AVL {
+ display: block;
+ margin: 0 auto;
+ height: 20%;
+ z-index: 0;
+ border-radius: 4px;
+ border-top-right-radius: 0;
+}
+
+a:link,
+a:visited,
+a:active {
+ text-decoration: none;
+ color: #F98364;
+}
+
+a:hover {
+ color: #6380CE;
+}
+
+p {
+ margin: 0 auto;
+ display: block;
+ padding: 8px;
+ text-align: left;
+}
+
+p span {
+ text-align: center;
+ display: block;
+}
+
+span {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+
+.top {
+ margin-top: 40px;
+}
+
+.bottom {
+ font-size: 14px;
+ color: #999;
+ text-align: center;
+}
+
+.bridge {
+ margin: 0 auto;
+ margin-top: 40px;
+ display: block;
+ height: 73px;
+ width: 152px;
+ opacity: .7;
+}
+
+.home {
+ text-align: center;
+}
+
+.bridge_small:hover {
+ opacity: 1;
+}
+
+.home a:link,
+.home a:visited,
+.home a:active {
+ text-align: center;
+}
+
+.images_div {
+ text-align: center;
+}
+
+.allstats {
+ display: block;
+ margin-top: 16px;
+ width: 100%;
+ border: 1px solid rgba(0,0,0,0.2);
+ box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+}
+
+.hnr {
+ width: 80%;
+ border: 1px solid rgba(0,0,0,0.2);
+ box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+}
+
+pre {
+ display: block;
+ margin: 0 auto;
+ background-color: #F1F1F1;
+ border: 1px solid rgba(0,0,0,0.2);
+ padding: 8px;
+ font-size: 12px;
+ white-space: pre-wrap;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+ p,
+ pre,
+ #AVL {
+   width: 80%;
+ }
+
+ body {
+   font-size: 2.8em;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 500px) {
+
+  p {
+    margin-bottom: 24px;
+  }
+
+ p,
+ pre,
+ #AVL {
+   width: 80%;
+ }
+ body {
+   /*font-size: 2.0em;*/
+ }
+
+ span {
+   width: 100%;
+ }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 500px) {
+ p {
+  margin-bottom: 24px;
+  font-size: 32px;
+ }
+ p,
+ pre,
+ #AVL {
+   width: 80%;
+ }
+ body {
+   font-size: 2.8em;
+ }
+ span {
+   font-size: 32px;
+   width: 100%;
+ }
+ .social-icons img {
+   padding: 12px;
+   height: 80px;
+   width: 80px;
+ }
+ .bottom {
+   font-size: 32px;
+ }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+ p,
+ pre,
+ #AVL {
+   width: 80%;
+ }
+ body {
+   font-size: 1.6em;
+ }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+ p,
+ pre,
+ #AVL {
+   width: 80%;
+ }
+ body {
+   font-size: 1.6em;
+ }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+ p,
+ pre,
+ #AVL {
+   width: 80%;
+ }
+ body {
+   font-size: 1.6em;
+ }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1000px) {
+ p,
+ pre,
+ #AVL {
+   width: 35%;
+ }
+ body {
+   font-size: 1em;
+ }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+ p,
+ pre,
+ #AVL {
+   width: 35%;
+ }
+ body {
+   font-size: 1em;
+ }
+}
+
+
+.colorchangeone {
+ inherit: none;
+ background-color: #f76859;
+ transition: ease-in-out 0s;
+ -webkit-transition: all ease-in-out 0s;
+}
+
+.colorchangetwo {
+ inherit: none;
+ background-color: #3c6b96;
+ transition: ease-in-out 3s;
+ -webkit-transition: all ease-in-out 3s;
+}
+
+.colorchangethree {
+ inherit: none;
+ background-color: #3b8f93;
+ transition: ease-in-out 3s;
+ -webkit-transition: all ease-in-out 3s;
+}
+
+.colorchangefour {
+ inherit: none;
+ background-color: #aea535;
+ transition: ease-in-out 3s;
+ -webkit-transition: all ease-in-out 3s;
+}
+
+.colorchangefive {
+ inherit: none;
+ background-color: #926daf;
+ transition: ease-in-out 3s;
+ -webkit-transition: all ease-in-out 3s;
+}
+
+.colorchange {
+ inherit: none;
+ background-color: #f76859;
+ transition: ease-in-out 3s;
+ -webkit-transition: all ease-in-out 3s;
+}
+
+.popfacts_images img {
+   height: 357px;
+   width: 500px;
+   padding: 8px;
+   border: 1px solid #333;
+   box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.google_images img {
+display: block;
+width: 100%;
+margin-bottom: 32px;
+border: 1px solid rgba(213, 206, 206, 0.43);
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.google_images.one {}
+
+.google_images.two {}
+
+.google_images.three {}
+
+
+.wxmw {
+   transition: 0.2s;
+   -webkit-transition: 0.2s;
+   display: block;
+   width: 150px;
+   margin: 0 auto;
+}
+
+.wxmw:hover {
+   opacity: 0.3;
+}
+
+
+.social-icons {
+  display: block;
+  text-align: center;
+  opacity: 0.2;
+}

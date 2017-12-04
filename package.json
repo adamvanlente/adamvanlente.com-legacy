@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo lol",
     "build": "webpack --config build/webpack.prod.js",
-    "dev": "node build/server.js"  },
+    "dev": "node build/server.js",
+    "copy-to-dist": "cp -R ./copy_to_dist/ ./dist/",
+    "deploy": "npm run build && npm run copy-to-dist && firebase deploy"
+  },
   "author": "Adam VanLente",
   "license": "MIT",
   "dependencies": {

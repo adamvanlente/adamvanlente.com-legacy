@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link rel="apple-touch-icon-precomposed" href="nashville_icon.png"/>
+    <style type="text/css">
+      
+      html { height: 100% }
+      
+      body { height: 100%; margin: 0; padding: 0 }
+      
+      #map-canvas { 
+        position: absolute;
+        display: block;
+        left: 5%;
+        top: 15%;
+        right: 5%;
+        bottom: 5%;
+        box-shadow: 0 0 8px rgba(0,0,0,0.4);
+      }
+
+      #header {
+        display: block;
+        width: 20em;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      h1,
+      h2 {
+        color: #384F92;
+        text-shadow: 1px 1px 2px #DCDCDC;
+      }
+
+
+      h1 {
+        font-size: 1.3em;
+        letter-spacing: .3em;
+        font-family: "Bitter", serif;
+        margin-bottom: 0;
+      }
+
+      h2 {
+        margin-top: 0;
+        font-family: "Bitter", serif;
+        font-size: .7em;
+        font-weight: normal;
+        margin-left: -4px;
+      }
+
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgFGCvAcoT-MkMo7X94vAnP3vhbt8J2Mg&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(36.142216,-86.741867),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          zoomControl: true
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        addMarkers(map);
+      }
+
+
+      function addMarkers(map) {
+
+        // Airport Marker
+        var airportLoc = new google.maps.LatLng(36.126133,-86.679039);
+        var airport = new google.maps.Marker({
+            position: airportLoc,
+            map: map,
+            title:"Airport"
+          });
+      
+        var airportInfo = new google.maps.InfoWindow({
+            content: 'l\'aeroport'
+        });
+
+        google.maps.event.addListener(airport, 'click', function() {
+          airportInfo.open(map,airport);
+        });
+
+        // Pirahnas Marker
+        var pirahnasLoc = new google.maps.LatLng(36.162298,-86.775654);
+        var pirahnas = new google.maps.Marker({
+            position: pirahnasLoc,
+            map: map,
+            title:"Pirahnas"
+          });
+      
+        var pirahnasInfo = new google.maps.InfoWindow({
+            content: 'Pirahna\'s.  Best. Sandwiches. Ever. <a href="http://piranhasbar.com/locations.html">link</a>'
+        });
+
+        google.maps.event.addListener(pirahnas, 'click', function() {
+          pirahnasInfo.open(map,pirahnas);
+        });
+
+        // Legends Marker
+        var legendsLoc = new google.maps.LatLng(36.160709,-86.778379);
+        var legends = new google.maps.Marker({
+            position: legendsLoc,
+            map: map,
+            title:"Legend's Corner"
+          });
+      
+        var legendsInfo = new google.maps.InfoWindow({
+            content: 'Legend\'s Corner. Records all over the wall.  Sometimes just regular rock & roll in here.'
+        });
+
+        google.maps.event.addListener(legends, 'click', function() {
+          legendsInfo.open(map,legends);
+        });
+
+        // Tootsie's Marker
+        var tootsieLoc = new google.maps.LatLng(36.160832,-86.77818);
+        var tootsie = new google.maps.Marker({
+            position: tootsieLoc,
+            map: map,
+            title: "Tootsie\'s"
+          });
+      
+        var tootsieInfo = new google.maps.InfoWindow({
+            content: 'Tootsie\'s.  Willie Nelson used to live upstairs.  Musicians wait all night just to play a song or two.  They work for tips.  Must see.'
+        });
+
+        google.maps.event.addListener(tootsie, 'click', function() {
+          tootsieInfo.open(map,tootsie);
+        });
+
+        // The Stage Marker
+        var thestageLoc = new google.maps.LatLng(36.161044,-86.778008);
+        var thestage = new google.maps.Marker({
+            position: thestageLoc,
+            map: map,
+            title: "The Stage"
+          });
+      
+        var thestageInfo = new google.maps.InfoWindow({
+            content: 'The Stage.  The acts here are usually a little more professional.  A great place for live music from 7pm (or so) on.'
+        });
+
+        google.maps.event.addListener(thestage, 'click', function() {
+          thestageInfo.open(map,thestage);
+        });
+
+        // Wild Horse Marker
+        var wildhorseLoc = new google.maps.LatLng(36.162651,-86.775431);
+        var wildhorse = new google.maps.Marker({
+            position: wildhorseLoc,
+            map: map,
+            title: "Wild Horse"
+          });
+      
+        var wildhorseInfo = new google.maps.InfoWindow({
+            content: 'Wild Horse.  Huge place where you can go line dance, or at least watch everyone line dance.  Big acts will come through here, so probably a chance of an admission from time to time.  <a href="http://wildhorsesaloon.com/index.php">link</a>'
+        });
+
+        google.maps.event.addListener(wildhorse, 'click', function() {
+          wildhorseInfo.open(map,wildhorse);
+        });
+
+        // Pharmacy
+        var pharmacyLoc = new google.maps.LatLng(36.184995,-86.75428);
+        var pharmacy = new google.maps.Marker({
+            position: pharmacyLoc,
+            map: map,
+            title: "Pharmacy"
+          });
+      
+        var pharmacyInfo = new google.maps.InfoWindow({
+            content: 'Pharmacy: My friend Hill\'s recommendation.  She says the burgers and shakes are the bomb.  I have never been.'
+        });
+
+        google.maps.event.addListener(pharmacy, 'click', function() {
+          pharmacyInfo.open(map,pharmacy);
+        });
+
+        // La Paletas
+        var paletasLoc = new google.maps.LatLng(36.121349,-86.790646);
+        var paletas = new google.maps.Marker({
+            position: paletasLoc,
+            map: map,
+            title: "Las Paletas"
+          });
+      
+        var paletasInfo = new google.maps.InfoWindow({
+            content: 'Las Paletas.  Gourmet mexican popsicles.  Just off of Paris ave.  Worth renting a car just for these.'
+        });
+
+        google.maps.event.addListener(paletas, 'click', function() {
+          paletasInfo.open(map,paletas);
+        });
+
+        // Parks
+        var parksLoc = new google.maps.LatLng(36.060039,-86.9034);
+        var parks = new google.maps.Marker({
+            position: parksLoc,
+            map: map,
+            title: "Parks"
+          });
+      
+        var parksInfo = new google.maps.InfoWindow({
+            content: 'Edwin/Percy Warner Parks.  You know, if you want to go to the park.  Size it up against Mission Dolores.'
+        });
+
+        google.maps.event.addListener(parks, 'click', function() {
+          parksInfo.open(map,parks);
+        });
+
+        // Bluebird
+        var bluebirdLoc = new google.maps.LatLng(36.102418,-86.816561);
+        var bluebird = new google.maps.Marker({
+            position: bluebirdLoc,
+            map: map,
+            title: "Bluebird"
+          });
+      
+        var bluebirdInfo = new google.maps.InfoWindow({
+            content: 'Bluebird cafe.  Nashville institution where many artists have been discovered or played for the first time.  I have never been, but it bears mentioning.'
+        });
+
+        google.maps.event.addListener(bluebird, 'click', function() {
+          bluebirdInfo.open(map,bluebird);
+        });    
+
+        // Western World
+        var westernLoc = new google.maps.LatLng(36.160882,-86.777498);
+        var western = new google.maps.Marker({
+            position: westernLoc,
+            map: map,
+            title: "Robert\'s Western World"
+          });
+      
+        var westernInfo = new google.maps.InfoWindow({
+            content: 'Western World.  My favorite.'
+        });
+
+        google.maps.event.addListener(western, 'click', function() {
+          westernInfo.open(map,western);
+        });    
+
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <h1>NASHVILLE</h1>
+      <h2>points of interest - prepared for Janelle</h2>
+    </div>
+    <div id="map-canvas"/>
+  </body>
+</html>

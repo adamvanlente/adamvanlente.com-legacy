@@ -1,0 +1,225 @@
+<html>
+<head>
+
+<title>Urban Mapping Coding Challenge</title>
+
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100' rel='stylesheet' type='text/css'>
+<link href="../images/favicon.ico" rel="shortcut icon" />
+<link href="css.css" rel="stylesheet" type="text/css">
+<link href="d3/nv.d3.css" rel="stylesheet" type="text/css">
+
+<script src="d3/d3.v3.js"></script>
+<script src="d3/nv.d3.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgFGCvAcoT-MkMo7X94vAnP3vhbt8J2Mg&sensor=true"></script>
+<script type="text/javascript" src="js.js"></script>
+
+</head>
+
+<body>
+
+<p class="top">
+  Hey David.  Below are a few representations of the data you sent.  Below each example are relevant code snippets.  Let me know if you have any questions.  Thanks!
+</p>
+
+<h2>
+  Google Maps
+  <span id="poly_toggle" onclick="um.toggleGooglePolygons()">hide polygons</span>
+</h2>
+
+<div id="google_map"></div>
+
+<p id="population_map_data">Click a polygon to see the state's population.</p>
+
+<pre>
+
+<span>/** Code used for the Google Map **/</span>
+
+<span>// Namespace for the coding challenge.  Not needed, but it is habit for me to
+// create a safe environment for naming variables and functions.</span>
+var um = {};
+
+<span>// You provided the data from an umi url.  I could have written a quick script
+// in Python to fetch this (due to XSS restrictions on the client side), but that
+// seemed unnecessary for this exercise, so I simply made the data local to the project.</span>
+um.populationDataUrl = 'http://adamvanlente.com/urbanmapping/population.json';
+
+<span>// No need to include jQuery here.  Though I would use jQuery ajax with
+// callbacks on most projects.  For this, its simpler for me to write this from
+// memory than pull in an unneccesary library.</span>
+um.getJsonObject = function(url) {
+  var xmlRequest = new XMLHttpRequest();
+  xmlRequest.open("GET",url,false);
+  xmlRequest.send(null);
+  return JSON.parse(xmlRequest.responseText);
+};
+
+<span>// Create an object from the JSON.</span>
+um.populationData = um.getJsonObject(um.populationDataUrl);
+
+<span>// Using the um.populationData object, draw polygon(s) for each state.</span>
+um.drawGooglePolygons = function() {
+  var data = um.populationData.features;
+  for (var i = 0; i < data.length; i++) {
+    var coords = data[i].geometry.coordinates;
+    var name = data[i].properties.name;
+    var population = data[i].properties.population;
+    var type = data[i].geometry.type;
+    <span>// Decide whether we're dealing with one or more Polygons.  For
+    // the sake of this challenge I'm not worried about cases other than
+    // Polygon & MultiPolygon.</span>
+    if (type == 'Polygon') {
+      var polygon = um.createGooglePolygon(coords, name, population);
+      polygon.setMap(um.googleMap);
+    } else if (type == 'MultiPolygon') {
+      for (var j = 0; j < coords.length; j++) {
+        var multiPolygon = um.createGooglePolygon(coords[j], name, population);
+        multiPolygon.setMap(um.googleMap);
+     }
+    }
+  }
+};
+
+<span>// Pass in coordinates and return a polygon.  Inside this function
+// also create a click listener for each polygon to display state
+// name and population.</span>
+um.createGooglePolygon = function(coords, name, population) {
+  var coordinates = um.googlePolygonCoords(coords);
+  var polygon = new google.maps.Polygon({
+      paths: coordinates,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35
+    });
+  <span>// More display friendly format for population.</span>
+  population = um.formatPopulation(population);
+  <span>// Click listener for polygon - displays state name and population.</span>
+  google.maps.event.addListener(polygon, 'click', function() {
+      var div = document.getElementById('population_map_data');
+      div.innerHTML = 'The population of ' + name + ' is ' + population + '.';
+    });
+  <span>// Push polygon to a global holder - helps toggle polygons on/off.</span>
+  um.googlePolygonHolder.push(polygon);
+  return polygon;
+};
+
+</pre>
+
+<h2>
+  Bar chart without libraries
+</h2>
+
+<p>Showing the top 10 largest states by population</p>
+
+<p id="population_bar_chart"></p>
+
+<pre>
+
+<span>/** Code for Bar Chart **/</span>
+
+<span>// How many states to count for Bar Chart.  Must be > 0 and <= 51.</span>
+um.numberOfStatesToChart = 10;
+<span>...</span>
+
+<span>// Using the populationData object, create a new object that will
+// be easier to sort for a bar chart.</span>
+um.buildChartData = function() {
+  <span>// Object that will store a simplified version of the data.</span>
+  um.populationDataSimple = [];
+  var data = um.populationData.features;
+  for (var i = 0; i < data.length; i++) {
+    var name = data[i].properties.name;
+    var population = data[i].properties.population;
+    <span>// Create a percentage, relative to the largest population number
+    // that can be used to create a display element.</span>
+    var percentage = population/um.largestPopulation;
+    percentage = (percentage * 100).toFixed(2);
+    item = {'population': population,
+            'percentage': percentage,
+            'name' : name};        
+    um.populationDataSimple.push(item);
+  }
+  um.displayChartData();
+};
+
+<span>// Create a bar chart to display the population of a specified
+// number of states.</span>
+um.displayChartData = function() {
+  <span>// Sort the list from largest to smallest population.</span>
+  um.populationDataSimple.sort(
+    function(a,b){return b.population - a.population});
+  var div = document.getElementById('population_bar_chart');
+  for (var j = 0; j < um.numberOfStatesToChart; j++) {
+    <span>// Unique display for every other bar.</span>
+    var barClass = j % 2 == 0 ? 'evenBar' : 'oddBar';
+    var name = entry.name;
+    var percentage = entry.percentage;
+    var population = entry.population;
+    population = um.formatPopulation(population);
+    <span>// Create display elements for chart.</span>
+    var span = document.createElement('span');
+    var label = document.createElement('label');
+    label.innerHTML = name + ': ' + population;
+    label.style.width = percentage + '%';
+    label.className = barClass;
+    span.appendChild(label);
+    div.appendChild(span);
+  } 
+};
+
+</pre>
+
+<h2>Pie chart with D3 &amp; NVD3</h2>
+
+<p>10 Largest states by population. Click label to toggle a state on/off, or double click to single it out.</p>
+
+<p id="pie_chart_holder">
+  <svg id="pie_chart" class="pie_chart"></svg>
+</p>
+
+<pre>
+
+<span>/** Code for Pie Chart **/</span>
+
+<span>&lt;!--Import D3 and NVD3 libraries.--&gt;
+&lt;script src="d3/d3.v3.js"&gt;&lt;/script&gt;
+&lt;script src="d3/nv.d3.js"&gt;&lt;/script&gt;
+...
+</span>
+<span>// NVD3 function for adding a pie chart.</span>
+um.addPieChart = function() {
+  nv.addGraph(function() {
+      <span>// Define size of pie chart.</span>
+      var width = 500,
+          height = 500;
+      <span>// Define the chart and add name and population as the parameters.</span>
+      var chart = nv.models.pieChart()
+          .x(function(d) { return d.name })
+          .y(function(d) { return d.population })
+          .color(d3.scale.category10().range())
+          .width(width)
+          .height(height);
+      <span>// D3 call to create the chart.</span>
+      d3.select("#pie_chart")
+            <span>// We created an object for our Pie chart when building the bar chart.</span>
+            .datum(um.populationForPieChart)
+          .transition().duration(1200)
+            .attr('width', width)
+            .attr('height', height)
+            .call(chart);
+      chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+      return chart;
+  });
+};
+
+</pre>
+
+<!-- Wait until the page has been rendered before trying to load the map/charts. -->
+
+<script type="text/javascript">
+  um.initialize();
+</script>
+
+ </body>  
+ </html>

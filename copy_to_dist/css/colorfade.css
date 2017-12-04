@@ -1,0 +1,75 @@
+#AVL {
+ display: block;
+ margin: 0 auto;
+ height: 20%;
+ width: 40%;
+ z-index: 0;
+ border-radius: 4px;
+ border-top-right-radius: 0;
+}
+
+#A, 
+#V,
+#L{
+ font-family: "Open Sans", sans-serif;
+ display: inline-block;
+ font-weight: 800;
+ font-size: 40px;
+ z-index: 4;
+ -webkit-transform:rotate(-0deg);
+ top: -6px;
+ position: relative;
+ left: 10px;
+ z-index: 1;
+ color: #F1F1F1;
+ text-shadow: 3.5px 3.5px 6px rgba(0,0,0,.5), .4px .4px 0 #333;
+}
+
+#V {
+ left: -2px;
+ -webkit-transform:rotate(0deg);
+ z-index: 4;
+}
+
+#L {
+ top: -61px;
+ left: 55px;
+ -webkit-transform:rotate(-0deg);
+ z-index: 3;
+}
+
+.colorchangeone {
+ inherit: none;
+ background-color: #f76859;
+ transition: ease-in-out 0s;
+}
+
+.colorchangetwo {
+ inherit: none;
+ background-color: #3c6b96;
+ transition: ease-in-out 3s;
+}
+
+.colorchangethree {
+ inherit: none;
+ background-color: #3b8f93;
+ transition: ease-in-out 3s;
+}
+
+.colorchangefour {
+ inherit: none;
+ background-color: #aea535;
+ transition: ease-in-out 3s;
+}
+
+.colorchangefive {
+ inherit: none;
+ background-color: #926daf;
+ transition: ease-in-out 3s;
+}
+
+.colorchange {
+ inherit: none;
+ background-color: #f76859;
+ transition: ease-in-out 3s;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CHI</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link rel="apple-touch-icon-precomposed" href="chicago_icon.png"/>
+    <style type="text/css">
+      
+      html { height: 100% }
+      
+      body { 
+        background-color: #000;
+        height: 100%;
+        margin: 0;
+        padding: 0 }
+      
+      #map-canvas { 
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: 0 0 8px rgba(0,0,0,0.4);
+        z-index: 1;
+      }
+
+      #header {
+        display: block;
+        position: absolute;
+        right: 8px;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 4;
+      }
+
+      h1,
+      h2 {
+        color: rgba(255,255,255,1);
+        text-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+      }
+
+
+      h1 {
+        font-size: 1.3em;
+        letter-spacing: .3em;
+        font-family: "Bitter", serif;
+        margin-bottom: 0;
+      }
+
+      h2 {
+        margin-top: 0;
+        font-family: "Bitter", serif;
+        font-size: .7em;
+        font-weight: normal;
+        margin-left: -4px;
+      }
+
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgFGCvAcoT-MkMo7X94vAnP3vhbt8J2Mg&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(41.878114,-87.629798),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          zoomControl: true
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        addMarkers(map);
+      }
+
+
+      function addMarkers(map) {
+
+        var bigStarLoc = new google.maps.LatLng(41.909195,-87.677161);
+        var bigStar = new google.maps.Marker({
+            position: bigStarLoc,
+            map: map,
+            title:"Big Star"
+          });
+      
+        var bigStarInfo = new google.maps.InfoWindow({
+            content: 'Big Star: amazing taco place that\'s a huge huge hit in the city, also has killer margaritas. Usually has a line, so want to get there earlier than you plan on eating to snag a table. Great for lunch! - from Arun' 
+        });
+
+        google.maps.event.addListener(bigStar, 'click', function() {
+          bigStarInfo.open(map,bigStar);
+        });
+
+        var pvLoc = new google.maps.LatLng(41.915494,-87.634614);
+        var pv = new google.maps.Marker({
+            position: pvLoc,
+            map: map,
+            title:"Perennial Virant"
+          });
+      
+        var pvInfo = new google.maps.InfoWindow({
+            content: 'Perennial Virant: Definitely a nicer place, but still casual enough where a suit coat is not required. Great food, amazing chef specials, i\'m a big fan here for a nicer evening out on the town but not crazy foodie like Next, Au Cheval or The Aviary (super high end) - from Arun'
+        });
+
+        google.maps.event.addListener(pv, 'click', function() {
+          pvInfo.open(map,pv);
+        });
+
+        var clLoc = new google.maps.LatLng(41.890289,-87.628179);
+        var cl = new google.maps.Marker({
+            position: clLoc,
+            map: map,
+            title:"Cantina Laredo"
+          });
+      
+        var clInfo = new google.maps.InfoWindow({
+            content: 'Cantina Laredo: great spanish/mexican, pretty tasty.  - from Arun'
+        });
+
+        google.maps.event.addListener(cl, 'click', function() {
+          clInfo.open(map,cl);
+        });
+
+
+        var vhLoc = new google.maps.LatLng(41.909091,-87.677494);
+        var vh = new google.maps.Marker({
+            position: vhLoc,
+            map: map,
+            title:"Violet Hour"
+          });
+      
+        var vhInfo = new google.maps.InfoWindow({
+            content: 'Violet Hour: this is a must visit, especially with your lady friend. Mostly for drinks, though they have appetizers too if you want to make it the start of a night. It\'s small but super intimate, large chairs like alice in wonderland, and they have amazing specialty drinks that are literally world reknown (won a bunch of national and worldwide awards). The ambiance alone is worth it. Be sure to try the Juliet and Romeo (ingredients might not sound great, but trust me. delicious).  - from Arun'
+        });
+
+        google.maps.event.addListener(vh, 'click', function() {
+          vhInfo.open(map,vh);
+        });
+
+
+        var fLoc = new google.maps.LatLng(41.886107,-87.620838);
+        var f = new google.maps.Marker({
+            position: fLoc,
+            map: map,
+            title:"Fairmont"
+          });
+      
+        var fInfo = new google.maps.InfoWindow({
+            content: 'Fairmont Millenium Park'
+        });
+
+        google.maps.event.addListener(f, 'click', function() {
+          fInfo.open(map,f);
+        });
+
+
+
+
+
+        // Don't forget to add
+          // - train station
+          // - hotel
+          // - pizza joints
+          // - 
+
+
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <h1>CHICAGO</h1>
+    </div>
+    <div id="map-canvas"></div>
+  </body>
+</html>
