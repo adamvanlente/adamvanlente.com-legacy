@@ -3,13 +3,23 @@
     <a href="http://www.wxmw.co" target="new">
       <img src="/images/wxmw-logo.png" alt="West by Midwest">
     </a>
-    &copy; 2017 Adam VanLente
+    &copy; {{ year }} Adam VanLente
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SiteFooter'
+  name: 'SiteFooter',
+  data () {
+    return {
+      year: 2018
+    }
+  },
+  computed: {
+    year() {
+      return new Date().getFullYear()
+    }
+  }
 }
 </script>
 
