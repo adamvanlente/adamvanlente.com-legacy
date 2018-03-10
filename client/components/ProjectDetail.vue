@@ -8,7 +8,7 @@
           <label>Links:</label>
           <a v-for="link in currentProject.links" v-bind:href="link.url" target="new">{{ link.text }}</a>
         </span>
-        <p v-for="block in currentProject.textBlocks">{{ block }}</p>
+        <p v-for="block in currentProject.textBlocks" v-html="block"></p>
         <div class="image-wrapper">
           <img v-for="img in currentProject.images" v-bind:src="img" v-bind:class=" img.indexOf('attach') != -1 ? 'attach-img' : ''">
         </div>
