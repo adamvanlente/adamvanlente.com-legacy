@@ -7,6 +7,47 @@ const state = {
 
   projects: {
 
+    // MikMak Attach
+    'mikmak-attach': {
+      name: 'Building MikMak Attach',
+      url: '/project/mikmak-attach',
+      slug: 'mikmak-attach',
+      links: [
+        {
+          url: 'http://www.mikmak.tv',
+          text: 'MikMak.tv'
+        },
+        {
+          url: 'http://www.adweek.com/digital/the-company-thats-taking-shoppable-video-seriously-and-driving-results/',
+          text: 'Adweek 3/18'
+        },
+        {
+          url: 'https://techcrunch.com/2017/04/25/mikmak-is-using-mini-infomercials-to-help-retailers-turn-their-stories-into-sales/',
+          text: 'Techcrunch 4/17'
+        },
+
+        {
+          url: 'https://digiday.com/marketing/brands-testing-shoppable-videos-instagram-stories-snap-ads/',
+          text: 'Digiday 4/17'
+        },
+        {
+          url: 'http://www.adweek.com/digital/how-brands-are-cashing-in-on-social-commerce-with-shoppable-instagram-stories-and-snapchat-ads/',
+          text: 'Adweek 3/17'
+        }
+      ],
+      textBlocks: [
+        'In early 2017, I joined MikMak as VP of Product & Engineering. The company was founded in 2015, and released an iOS that ran for a few years. I joined to help the company wind down the app, and pivot enterprise software platform around the company\'s learnings and clients.',
+        'Through a lot of research and brainstorming, we quickly developed a concept that solved a problem all of our clients were experiencing. They were driving traffic from social channels like Facebook and Instagram to their retail pages, but they weren\'t seeing any sales.',
+        'The concept we launched was called MikMak Attach: a vertical video player that lives within social platforms, and allows users to learn more about products and - most importantly - add an item to a shopping cart.',
+        'We prototyped Attach over a quick month. In the course of 6 months, we\'ve expanded the functionality of Attach, and signed up dozens of enterprise clients to the platform including Bose, Banana Republic, P&G, GoPro, L\'oreal, Revlon, Under Armour, Unilever and Zappos.',
+        'In addition to building up an incredibly strong list of clients, we\'ve gotten some great press around the product. Check out the links above to learn more about how we\'re helping our clients build a strong strategy on social.'
+      ],
+      images: [
+        '/images/attach-01.png',
+        '/images/attach-02.png'
+      ]
+    },
+
     // Applications at Yieldmo
     'yieldmo-applications': {
       name: 'Applications at Yieldmo',

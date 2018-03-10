@@ -5,16 +5,19 @@
       <div id="app">
         <h2>Project: {{ currentProject.name }}</h2>
         <span class="link-holder" v-if="currentProject.links.length > 0">
-          <label>Links</label>
+          <label>Links:</label>
           <a v-for="link in currentProject.links" v-bind:href="link.url" target="new">{{ link.text }}</a>
         </span>
         <p v-for="block in currentProject.textBlocks">{{ block }}</p>
-        <img v-for="img in currentProject.images" v-bind:src="img" alt="">
+        <div class="image-wrapper">
+          <img v-for="img in currentProject.images" v-bind:src="img" v-bind:class=" img.indexOf('attach') != -1 ? 'attach-img' : ''">
+        </div>
+
       </div>
     </template>
 
     <h1>{{ msg }}</h1>
-    <router-link :to="{ path: project.slug }" class="big-link" v-for="(project, index) in projectData">{{ project.name }}</router-link>
+    <router-link :to="{ path: project.slug }" class="big-link" v-show="currentRoute != project.slug" v-for="(project, index) in projectData">{{ project.name }}</router-link>
   </div>
 
 </template>
@@ -29,7 +32,11 @@ export default {
       projectData: this.$store.state.projects
     }
   },
+  mounted() {},
   computed: {
+    currentRoute() {
+      return this.$route.params.name
+    },
     currentProjectName() {
       return this.$route.params.name;
     },
@@ -120,19 +127,15 @@ export default {
      text-align: left;
    }
    .link-holder a {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    background: #F98364;
-    padding: 6px 12px;
-    border-radius: 1px;
-    font-size: 12px;
-    margin-right: 8px;
+     font-family: 'Helvetica', sans-serif;
+     display: inline-block;
+     color: #F98364;
+     font-size: 16px;
+     margin-right: 8px;
    }
    .link-holder label {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Helvetica', sans-serif;
     font-size: 16px;
-    color: #9e9898;
     display: inline-block;
     margin-right: 8px;
     vertical-align: middle;
@@ -147,5 +150,19 @@ export default {
      .link-holder {
        width: 85%;
      }
+   }
+
+   .attach-img {
+    display: inline-block;
+    vertical-align: top;
+    height: 450px;
+    width: auto;
+    margin: 0 24px;
+    border: none;
+   }
+
+   .image-wrapper {
+     display: block;
+     text-align: center;
    }
 </style>
