@@ -5,7 +5,8 @@
     </span>
     <span class="rightMenu">
       <a href="https://www.github.com/adamvanlente" target="new">GitHub</a>
-      <a href="https://angel.co/adam-vanlente" target="new">AngelList</a>
+      <!-- <a href="https://angel.co/adam-vanlente" target="new">AngelList</a> -->
+      <a href="https://www.linkedin.com/in/adam-vanlente-905950125" target="new">LinkedIn</a>
     </span>
 
   </div>
