@@ -1,6 +1,6 @@
 # adamvanlente.com
 
-My personal website., updated 2017.  Made using Vue, using the lovely [vuepack](https://github.com/egoist/vuepack) generator.
+Personal website.  Made using Vue, using the lovely [vuepack](https://github.com/egoist/vuepack) generator.
 
 [adamvanlente.com](http://www.adamvanlente.com)
 

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <span class="leftMenu">
-      <a href="/">Adam VanLente</a>
+      <a href="/">Adam Van Lente</a>
     </span>
     <span class="rightMenu">
       <a href="https://www.github.com/adamvanlente" target="new">GitHub</a>
