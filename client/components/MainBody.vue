@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><span class="currently">Currently</span>VP of Product &amp; Engineering at <a href="http://www.mikmak.tv/" target="new">MikMak</a>, building tools for the world's biggest brands in NYC.</p>
+    <p><span class="currently">Currently</span>VP of Product &amp; Engineering at <a href="http://www.mikmak.tv/" target="new">MikMak</a> in NYC, building tools for the world's biggest brands.</p>
     <p><span class="previously">Previously</span>Lead Product Engineer &amp; Product Owner <a href="http://www.yieldmo.com/" target="new">Yieldmo</a>, where we built some great Applications, grew a ton, and did excellent things for mobile advertising.</p>
     <p><span class="before">Before</span>Several years working in geospatial software, mostly at Google on a <a href="https://www.google.com/work/mapsearth/" target="new">Maps for Business</a> product, and also at <a href="https://www.crunchbase.com/organization/urbanmapping" target="new">Urban Mapping</a>, where I spruced up some applications before they were acquired by <a href="http://www.maponics.com/" target="new">Maponics</a>.</p>
     <p><span class="earlier">Earlier</span>Ran a small t-shirt company called <a href="http://www.retroduck.com/" target="new">RetroDuck</a> for about 7 years. I honed my product &amp; software skills here, and still co-own the company with some friends.</p>
