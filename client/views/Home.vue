@@ -2,7 +2,7 @@
   <div class="page">
     <SiteHeader></SiteHeader>
     <MainBody></MainBody>
-    <ProjectList></ProjectList>
+    <!-- <ProjectList></ProjectList> -->
     <SiteFooter></SiteFooter>
   </div>
 </template>

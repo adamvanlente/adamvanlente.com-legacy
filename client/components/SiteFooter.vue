@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
-    <a href="http://www.wxmw.co" target="new">
+    <!-- <a href="http://www.wxmw.co" target="new">
       <img src="/images/wxmw-logo.png" alt="West by Midwest">
-    </a>
+    </a> -->
     &copy; {{ year }} Adam Van Lente
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     font-family: 'Helvetica', sans-serif;
     font-size: 12px;
     color: #bdbdbd;
-    margin: 0 auto;
+    margin: 32px auto;
     font-weight: lighter;
     text-align: center;
   }
